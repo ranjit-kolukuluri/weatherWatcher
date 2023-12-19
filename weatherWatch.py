@@ -83,7 +83,6 @@ def main():
     if rows_to_update:
         worksheet.update(f'C2:F{len(rows_to_update) + 1}', rows_to_update)
 
-
 if __name__ == "__main__":
     # Execute the main function when the script is run
     main()
