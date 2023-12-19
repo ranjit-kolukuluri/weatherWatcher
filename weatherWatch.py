@@ -58,7 +58,7 @@ def main():
     gc = authenticate_gspread(credentials_file)
 
     # Specify Google Sheet title and ID
-    sheet_title = 'Weather'
+    sheet_title = 'Weather Data from Openmeteo'
     spreadsheet_id = '1kmZ1R2r6dbf1iasRiURvhmNW_Xq37CiG7grKuZ9Qj9A'
 
     try:
@@ -69,14 +69,14 @@ def main():
         exit()
 
     # Get latitude and longitude values from the sheet
-    values_a = worksheet.col_values(1)[1:]
-    values_b = worksheet.col_values(2)[1:]
+    latitude = worksheet.col_values(1)[1:]
+    longitude = worksheet.col_values(2)[1:]
     rows_to_update = []
 
     # Iterate through the rows and update weather information
-    for value_a, value_b in zip(values_a, values_b):
-        weather = get_weather(float(value_a), float(value_b), "temperature_2m,wind_speed_10m")
-        print(weather)
+    for latitude, longitude in zip(latitude, longitude):
+        weather = get_weather(float(latitude), float(longitude), "temperature_2m,wind_speed_10m")
+        #print(weather)
         rows_to_update.append(weather)
 
     # Update the Google Sheet with the retrieved weather information
