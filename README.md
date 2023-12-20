@@ -76,4 +76,4 @@ pip install arrow
 - Iterate through the rows and update weather information to a list object
 - Update the worksheet rows with the weather data to the corresponding rows and columns
 
-  ### Run the Python script to execute the main() method to retrieve the weather information and update the Google Sheet
+### Final Step: Run the Python script to execute the main() method to retrieve the weather information and update the Google Sheet
