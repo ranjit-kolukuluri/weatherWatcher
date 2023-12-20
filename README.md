@@ -58,6 +58,9 @@ pip install arrow
   
 ### Python Script: weatherWatcher.py
 
+**get_config()**
+- Built to fetch the configurations variables created for service account credentials json file path, Google Sheet ID and Title
+  
 **authenticate_gspread() method**
 - Build credentials object to authenticate to Google Sheets API by using the service account json file and setting up the scope to ['https://www.googleapis.com/auth/spreadsheets']
 - The method returns the authentication object
@@ -70,8 +73,8 @@ pip install arrow
 - Method will return a list with temperature, windspeed, and time
   
 **main() method**
-- Establish Google Sheets authentication by passing the JSON file path with service account credentials to the authenticate_gspread() method
-- Create string variables with Google Sheet ID and title values
+- Establish Google Sheets authentication by passing the config file variable with json path with service account credentials to the authenticate_gspread() method
+- Create string variables with Google Sheet ID and title values and values from the config file
 - Open the worksheet by sheet ID and load the values to the latitude and longitude variables
 - Iterate through the rows and update weather information to a list object
 - Update the worksheet rows with the weather data to the corresponding rows and columns
