@@ -56,19 +56,24 @@ pip install arrow
 
 ```
   
-### Python Script Development
+### Python Script: weatherWatcher.py
 
 **authenticate_gspread() method**
 - Build credentials object to authenticate to Google Sheets API by using the service account json file and setting up the scope to ['https://www.googleapis.com/auth/spreadsheets']
 - The method returns the authentication object
+  
 **get_weather() method**
 - Construct the api endpoint using the reference from (https://open-meteo.com/)
 - Build the method to take longitude, latitude, and current as the input arguments
 - Parse the response to get the temperature, windspeed, and time from the 'current' dictionary object
 - Convert the temperature, windspeed, and time based on the expected format
-- Method will return a list with temperature, windspeed, and time  
-
+- Method will return a list with temperature, windspeed, and time
+  
 **main() method**
 - Establish Google Sheets authentication by passing the JSON file path with service account credentials to the authenticate_gspread() method
 - Create string variables with Google Sheet ID and title values
-- Open the worksheet by sheet ID 
+- Open the worksheet by sheet ID and load the values to the latitude and longitude variables
+- Iterate through the rows and update weather information to a list object
+- Update the worksheet rows with the weather data to the corresponding rows and columns
+
+  ### Run the Python script to execute the main() method to retrieve the weather information and update the Google Sheet
