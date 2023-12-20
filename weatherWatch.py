@@ -4,7 +4,13 @@ from google.auth import exceptions
 from google.oauth2 import service_account
 import math
 import arrow
+import json
 
+def get_config():
+    # Load configuration from the JSON file
+    with open('/Users/ranjit.kolukuluri/Library/Application Support/JetBrains/IntelliJIdea2022.1/scratches/config.json', 'r') as config_file:
+        config = json.load(config_file)
+    return config
 
 def get_weather(latitude, longitude, current):
     base_url = "https://api.open-meteo.com/v1/forecast"
@@ -52,14 +58,15 @@ def authenticate_gspread(credentials_file):
 
 
 def main():
+    config = get_config()
     # Specify the path to the service account JSON file
-    credentials_file = '/Users/ranjit.kolukuluri/Documents/API/getweather-408520-839d6553eee3.json'
+    credentials_file = config['credentials_file']
     # Authenticate with Google Sheets API
     gc = authenticate_gspread(credentials_file)
 
     # Specify Google Sheet title and ID
-    sheet_title = 'Weather Data from Openmeteo'
-    spreadsheet_id = '1kmZ1R2r6dbf1iasRiURvhmNW_Xq37CiG7grKuZ9Qj9A'
+    sheet_title = config['sheet_title']
+    spreadsheet_id = config['spreadsheet_id']
 
     try:
         # Open the specified Google Sheet
